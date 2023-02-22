@@ -54,7 +54,8 @@ function waitUntilNoBusy() {
     cy.document().then((document) => {
       const busy = Array.from(document.querySelectorAll('[aria-busy="true"]'));
       return busy.every((element) => !isVisible(element));
-    })
+    }),
+    { errorMsg: 'Timeout: an element with aria-busy="true" was present' }
   );
 }
 
